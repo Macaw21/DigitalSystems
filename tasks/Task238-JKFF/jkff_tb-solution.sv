@@ -1,9 +1,9 @@
-module jkff_tb;
+module jkff_solution_tb;
 
 logic J,K,CLK,Q;
 
 //Instantiate Unit Under Test (UUT)
-jkff u1(Q,J,K,CLK);
+jkff_solution u1(Q,J,K,CLK);
 
 initial
 begin

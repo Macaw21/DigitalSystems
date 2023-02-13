@@ -1,5 +1,5 @@
 // JK Flip-Flop
-module jkff(output logic Q, input logic J, K, CLK);
+module jkff_solution(output logic Q, input logic J, K, CLK);
 
 always @(negedge CLK) begin
 
