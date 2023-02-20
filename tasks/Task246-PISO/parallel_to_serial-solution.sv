@@ -1,4 +1,4 @@
-module parallel_to_serial #(parameter N=8) (output logic SOUT, input logic CLK, EN, SHIFT, N_RESET, logic [N-1:0] DATAW);
+module parallel_to_serial_solution #(parameter N=8) (output logic SOUT, input logic CLK, EN, SHIFT, N_RESET, logic [N-1:0] DATAW);
 
 logic [N-1:0] sr;
 
