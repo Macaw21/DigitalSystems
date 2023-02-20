@@ -604,9 +604,14 @@ https://fpgasoftware.intel.com/eula.
 	(bus)
 )
 (connector
-	(text "led[7..0]" (rect 570 440 608 457)(font "Intel Clear" ))
-	(pt 560 456)
-	(pt 616 456)
+	(pt 560 704)
+	(pt 600 704)
+	(bus)
+)
+(connector
+	(text "led[7..0]" (rect 584 509 601 547)(font "Intel Clear" )(vertical))
+	(pt 600 456)
+	(pt 600 704)
 	(bus)
 )
 (junction (pt 520 40))

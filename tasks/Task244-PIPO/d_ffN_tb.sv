@@ -18,22 +18,41 @@ initial
 	begin
 	//Initialise
 	D = 0;
+
+	//RESET
 	n_res = 0;
 	#10ps;
 	n_res = 1;
 	
+	//ENABALED
+	en = '1;
+
 	//Test for when D = 10101010
 	@(negedge clk);	//Wait for negative edge of clock
 	D = 8'b10101010;		//Set D = 10101010
 	@(posedge clk);	//Wait for positive edge of clock
-	#11 assert(Q == D) $display("PASS"); else $error("FAIL");	//Check Q
+	#11 assert(Q == D) $display("PASS"); else $error("FAIL: Q = %b", Q);	//Check Q
 
-	//Test for when D = 01010101
+	//DISABLED	
+	en = '0;
+
+	//CHANGE INPUT AND DISBLE D = 01010101
 	@(negedge clk);	//Wait for negative edge of clock
 	D = 8'b01010101;		//Set D = 10101010
 	@(posedge clk);	//Wait for positive edge of clock
-	#11 assert(Q == D) $display("PASS"); else $error("FAIL");	//Check Q
+	//should keep previous value of D
+	#11 assert(Q == 8'b10101010) $display("PASS"); else $error("FAIL: Q = %b", Q);	//Check Q
+
+	//ENABALED
+	en = '1;
+
+	//Test for when D = 01010101
+	@(negedge clk);	//Wait for negative edge of clock
+	D = 8'b01010101;		//Set D = 01010101
+	@(posedge clk);	//Wait for positive edge of clock
+	#11 assert(Q == D) $display("PASS"); else $error("FAIL: Q = %b", Q);	//Check Q
 	
+
 	//Test D is ignored when reset
 	@(negedge clk);	//Wait for negative edge of clock
 	D = 8'b10101010;
