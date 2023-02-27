@@ -26,7 +26,7 @@ always_comb begin : next_state_logic
 	S1: 	next_state = S2;
 	
 	S2: 	if (X == '0) 
-				next_state = S0; 
+				next_state = S0;
 		
 	endcase
 end
