@@ -12,15 +12,16 @@ assign Y = count;
 always_ff @(posedge CLK) begin
 	if (N_RESET == 0) 
 		count <= 0;
-	else
-		if (DIR == 1)
-			if (count > 0) begin
-			count <= count - 1;
-			end
-		else
-			if (count < N-1) begin
+	else begin
+		if (DIR == 1) begin
+			if (count < ((2**N)-1)) begin
 			count <= count + 1;
 			end
+		end	
+		else if (count > 0) begin
+		count <= count - 1;
+		end	
+	end
 end
 
 endmodule
