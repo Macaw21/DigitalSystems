@@ -1,7 +1,7 @@
 
 module fsm_moore (input logic CLK, N_RESET, X, READY, output logic RESET, START, Y);
 
-typedef enum int unsigned { IDLE = 1, ST = 2, HD = 4, DT=8 } state_t;
+typedef enum int unsigned { IDLE = 1, ST = 2, HD = 4, DT = 8 } state_t;
 state_t state, next_state;
 
 always_comb begin : next_state_logic
@@ -23,7 +23,8 @@ always_comb begin : next_state_logic
 			else if (READY == '1)
 				next_state = DT;
             
-   DT:   next_state = IDLE;
+   DT:   if ( X == 0 )
+				next_state = IDLE;
             
    default:
          next_state = IDLE; 
